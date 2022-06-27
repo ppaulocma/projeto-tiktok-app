@@ -88,5 +88,5 @@ app.use(express.static('public'));
 
 // Start http listener
 const port = process.env.PORT || 8081;
-httpServer.listen(port);
+httpServer.listen(process.env.PORT || 5000)
 console.info(`Server running! Please visit http://localhost:${port}`);

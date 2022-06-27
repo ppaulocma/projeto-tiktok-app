@@ -1,7 +1,7 @@
 // This will use the demo backend if you open index.html locally via file://, otherwise your server will be used
-console.log(location.protocol);
-//let backendUrl = 'file:///C:/Users/Paulo%20Cesar/Desktop/Projeto%20TikTok/TikTok-Live-Connector/src/index.js';
-let backendUrl = "https://projeto-tiktok.herokuapp.com/";
+//let backendUrl = 'file:///C:/Users/Paulo%20Cesar/Desktop/Projeto%20TikTok/TikTok-Live-Connector/';
+//let backendUrl = "https://projeto-tiktok.herokuapp.com/";
+let backendUrl = "https://tiktok-chat-reader.zerody.one/";
 let connection = new TikTokIOConnection(backendUrl);
 
 // Counter
