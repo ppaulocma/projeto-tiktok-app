@@ -1,80 +1,106 @@
-body {
-    font-family:Arial, Helvetica, sans-serif;
-    min-width: 800px;
+.central-row {
+    max-width: 200vh;
+    position: relative;
+    top: 30px;
 }
 
-h1 {
-    font-size: 1.8em;
-    margin-top: 0px;
-    margin-bottom: 0px;
+.central-div {
+    background-color: rgb(0, 0, 0);
 }
 
-a {
-    color: #58a6ff;
+.img-1 {
+    max-width: 100%;
+    max-height: 100%;
+}
+.img-2 {
+    max-width: 100%;
+    max-height: 90%;
 }
 
-.head {
-    margin-bottom: 15px;
+.progress-bar1{
+    height: 50px;
+    padding: 5px;
+    background-color: green;
+    display: flex;
 }
 
-.subTitle {
-    font-size: 0.8em;
+.progress-bar1::before{
+    content: "";
+    width: calc(var(--progress1) * 1%);
+    background-color: yellow;
+    transition: all .2s ease;
+}
+.progress-bar2{
+    height: 50px;
+    padding: 5px;
+    background-color: white;
+    display: flex;
+}
+
+.progress-bar2::before{
+    content: "";
+    width: calc(var(--progress2) * 1%);
+    background-color: red;
+    transition: all .2s ease;
+}
+
+.percent1 {
     font-weight: bold;
+    font-size: 24px;
+    position: absolute;
+    left: 45%;
+}
+.percent2 {
+    font-weight: bold;
+    font-size: 24px;
+    position: absolute;
+    left: 45%;
 }
 
-.usernamelink {
-    color: #18508f;
-    text-decoration: none;
+.tiktok {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.661);
+    border-radius: 10px;
+    padding: 10px;
+    width: 120px;
+    height: 120px;
+    left: 10px;
+    top: 60px;
 }
 
-#roomUserText {
-    width: 100%;
-    text-align: right;
+.rosa {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.661);
+    border-radius: 10px;
+    padding: 10px;
+    width: 120px;
+    height: 120px;
+    top: 10px;
+    left: 10px;
 }
 
-#roomStats {
-    width: 100%;
-    text-align: right;
-}
-
-#roomStats b {
-    margin-right: 20px;
-}
-
-.splitchattable, .splitstatetable {
-    width: 100%;
-}
-
-.splitstatetable td {
-    width: 50%;
-}
-
-.containerheader {
+.bolsonaroCount {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.503);
+    padding: 10px;
+    border-radius: 10px;
+    top: 60px;
+    right: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: blue;
     text-align: center;
 }
 
-.chatcontainer, .giftcontainer {
-    overflow-y: scroll;
-    height: calc(100vh - 240px);
-    word-wrap: break-word;
-}
-
-.chatcontainer {
-    min-width: 400px;
-    max-width: calc(100vw - 430px);
-}
-
-.giftcontainer {
-    min-width: 400px;
-}
-
-.miniprofilepicture {
-    height: 20px;
-    width: 20px;
-}
-
-.gifticon {
-    height: 50px;
-    width: 50px;
-    margin-right: 10px;
+.lulaCount {
+    position: absolute;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.503);
+    border-radius: 10px;
+    color: red;
+    top: 20px;
+    right: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
 }

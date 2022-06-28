@@ -8,6 +8,8 @@ let connection = new TikTokIOConnection(backendUrl);
 let viewerCount = 0;
 let likeCount = 0;
 let diamondsCount = 0;
+let bolsonaro = 1;
+let lula = 1;
 
 $(document).ready(() => {
     $('#connectButton').click(connect);
@@ -141,58 +143,57 @@ function addGiftItem(data) {
 connection.on('roomUser', (msg) => {
     if (typeof msg.viewerCount === 'number') {
         viewerCount = msg.viewerCount;
-        updateRoomStats();
+        
     }
 })
 
 // like stats
 connection.on('like', (msg) => {
     if (typeof msg.likeCount === 'number') {
-        addChatItem('#447dd4', msg, msg.label.replace('{0:user}', '').replace('likes', `${msg.likeCount} likes`))
     }
 
     if (typeof msg.totalLikeCount === 'number') {
         likeCount = msg.totalLikeCount;
-        updateRoomStats();
     }
 })
 
 // Member join
 let joinMsgDelay = 0;
 connection.on('member', (msg) => {
-    let addDelay = 250;
-    if (joinMsgDelay > 500) addDelay = 100;
-    if (joinMsgDelay > 1000) addDelay = 0;
-
-    joinMsgDelay += addDelay;
-
-    setTimeout(() => {
-        joinMsgDelay -= addDelay;
-        addChatItem('#21b2c2', msg, 'joined', true);
-    }, joinMsgDelay);
+    
 })
 
 // New chat comment received
 connection.on('chat', (msg) => {
-    addChatItem('', msg, msg.comment);
 })
 
 // New gift received
 connection.on('gift', (data) => {
-    addGiftItem(data);
 
-    if (!isPendingStreak(data) && data.diamondCount > 0) {
-        diamondsCount += (data.diamondCount * data.repeatCount);
-        updateRoomStats();
+    if (data.giftName == 'Rose') {
+        bolsonaro++;
+    } else if(data.giftName == "TikTok"){
+        lula++;
     }
+    
+    let total =  bolsonaro + lula;
+
+    let percentBolsonaro = ((bolsonaro * 100) / total).toFixed(0);
+    let percentLula = ((lula * 100) / total).toFixed(0);
+
+    $('.progress-bar1').attr('style', `--progress1:${percentBolsonaro}`)
+    $('.progress-bar2').attr('style', `--progress2:${percentLula}`)
+    $('.percent1').text(`${percentBolsonaro}%`)
+    $('.percent2').text(`${percentLula}%`)
+    $('.bolsonaroCount').html(`${bolsonaro} <br> Votos`);
+    $('.lulaCount').html(`${lula} <br> Votos`);
+
 })
 
 // share, follow
 connection.on('social', (data) => {
-    let color = data.displayType.includes('follow') ? '#ff005e' : '#2fb816';
-    addChatItem(color, data, data.label.replace('{0:user}', ''));
 })
 
 connection.on('streamEnd', () => {
-    $('#stateText').text('Stream ended.');
+    console.log(`live acabou`)
 })
